@@ -47,6 +47,7 @@ tidy_data_set <- rbind(train_set, test_set)
 
 # Write the tidy_data_set.csv file:
 write.csv(tidy_data_set, "tidy_data_set.csv")
+write.table(tidy_data_set, "tidy_data_set.txt")
 
 # Generate a temporary data frame that groups the data by subject and activity:
 tmp <- tidy_data_set %>% 
