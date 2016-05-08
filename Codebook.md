@@ -75,25 +75,17 @@ train_set <- mutate(train_set, "Data Set" = "TRAIN")
 ```
 And finally merge both train and test data sets:
 ```
-tidy_data_set <- rbind(train_set, test_set)
+full_data_set <- rbind(train_set, test_set)
 ```
-Write the tidy_data_set.csv file:
+Groups it by subject, activity type then summarizes it by calculating the mean of each variable:
 ```
-write.csv(tidy_data_set, "tidy_data_set.csv")
-write.table(tidy_data_set, "tidy_data_set.txt")
-```
-Generate a temporary data frame that groups the data by subject and activity:
-```
-tmp <- tidy_data_set %>% 
+tidy_data_set <- full_data_set %>% 
   group_by(Subject, Activity) %>% 
   summarise_each(funs(mean))
-tmp <- select(tmp, -`Data Set`)
+tidy_data_set <- select(tidy_data_set, -`Data Set`)
 ```
-Writes a file per subject containing the mean of every variable per activity:
+Write the tidy_data_set.csv and tidy_data_set.txt files:
 ```
-for (i in min(tmp$Subject):max(tmp$Subject)) {
-  print(i)
-  write.csv(x=filter(tmp,Subject==i),file=paste0("data-subject-",i,".csv"))
-}
+write.csv(tidy_data_set, "tidy_data_set.csv")
+write.table(tidy_data_set, "tidy_data_set.txt", row.name=FALSE)
 ```
-
