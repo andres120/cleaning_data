@@ -84,7 +84,7 @@ tidy_data_set <- full_data_set %>%
   summarise_each(funs(mean))
 tidy_data_set <- select(tidy_data_set, -`Data Set`)
 ```
-Write the tidy_data_set.txt and tidy_data_set.txt files:
+Write the tidy_data_set.txt file:
 ```
 write.table(tidy_data_set, "tidy_data_set.txt", row.name=FALSE)
 ```
