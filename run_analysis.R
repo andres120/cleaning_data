@@ -2,14 +2,14 @@
 library(dplyr)
 
 # Read of the files containing the data:
-subject_test <- read.table("subject_test.txt")
-subject_train <- read.table("subject_train.txt")
-X_test <- read.table("X_test.txt")
-X_train <- read.table("X_train.txt")
-y_test <- read.table("y_test.txt")
-y_train <- read.table("y_train.txt")
-features <- read.table("features.txt")
-activity_labels <- read.table("activity_labels.txt")
+subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+X_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
+y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
+features <- read.table("./UCI HAR Dataset/features.txt")
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
 
 # Filter the features to only include mean and standard deviation variables:
 reduced_features <- features[grep("mean\\(|std\\(",features[,2]),2]
